@@ -2,14 +2,29 @@
 <html ng-app="projectList">
 
 <head>
-  <title>Project List</title>
+  <title ng-bind="(project.appTitle)">Project List</title>
+  <!--
+  Commenting out Bootsrap as it will be replaced with material design stuff
+
   <link href="css/bootstrap.css" rel="stylesheet" />
   <link href="css/bootstrap-theme.css" rel="stylesheet" />
-  <!-- app-specific css beyond bootstrap-->
-  <link href="css/app.css" rel="stylesheet" />
+-->
   <script src="lib/angular.js"></script>
+  <script src="lib/angular-modules/angular-animate.js"></script>
+  <script src="lib/angular-modules/angular-aria.js"></script>
+  <script src="lib/hammer.js"></script>
+  <script src="lib/angular-hammer.js"></script>
+  <script src="lib/angular-material.js"></script>
+  <!-- material resources -->
+  <link href="css/angular-material.css" rel="stylesheet" />
+  <!-- material theme -->
+  <link href="css/blue-theme.css" rel="stylesheet" />
+  <link href="css/blue-grey-theme.css" rel="stylesheet" />
+  <!-- app-specific css beyond bootstrap-->
+  <!--<link href="css/app.css" rel="stylesheet" />-->
+
   <script>
-    var projectApp = angular.module("projectList", []);
+    var projectApp = angular.module("projectList", ['ngMaterial']);
 
     projectApp.controller("projectListCtrl", function ($scope) {
       $scope.appTitle = "Portfolio Project List";
@@ -359,6 +374,14 @@
           "notes": ""
     },
         {
+          "name": "Next Generation Book Design",
+          "description": "Ideas and sample code (XML, XSLT, SCSS and CSS) for a converged book proposal. Something that can be read directly in an ebook reader and a web browser",
+          "url": "",
+          "type": "Writeup and code",
+          "stage": "Planning",
+          "notes": ""
+    },
+        {
           "name": "Creating video tutorials",
           "description": "Pick 2 or 3 of the projects above, plan and script a tutorial around them and create the video tutorial",
           "url": "",
@@ -372,62 +395,77 @@
 </head>
 
 <body ng-controller="projectListCtrl">
-  <div class="container-fluid">
-    <div class="jumbotron">
-      <h1>{{appTitle}}</h1>
-
-      <p>Projects and ideas I'm currently working on</p>
-
-      <p>Currently there are <span class="label label-default">{{projects.length}}</span> projects in the list</p>
+  <md-toolbar md-theme="blue">
+    <div layout="horizontal" layout-padding>
+      <div layout-align="start" flex>
+        <h3 id="top">{{appTitle}}</h3>
+      </div>
+      <div class="md-toolbar-tools" layout-align="end" flex>
+        <md-button class="md-raised md-primary">
+          <md-tooltip>
+            Sort
+          </md-tooltip>
+          <md-icon icon="img/icons/new.svg">
+        </md-button>
+        <md-button class="md-raised md-primary">
+          <md-tooltip>
+            New Project
+          </md-tooltip>
+          <md-icon icon="img/icons/new.svg">
+          </md-icon>
+        </md-button>
+      </div>
     </div>
+  </md-toolbar>
+  <a name="top" id="top">&nbsp;</a>
+  <md-card class="md-padding">
+    <p>Projects and ideas I'm currently working on</p>
+    <p>Currently there are {{projects.length}} projects in the list</p>
+  </md-card>
 
-    <div class="panel">
-      <h2>Current Project List</h2>
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>Project Name</th>
-            <th>Description</th>
-            <th>URL</th>
-            <th>Type</th>
-            <th>Stage</th>
-            <th>Notes (if any)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr ng-repeat="project in projects">
-            <td>
-              <p>{{project.name}}</p>
-            </td>
-            <td>
-              <p>{{project.description}}</p>
-            </td>
-            <td>
-              <ul class="list-unstyled">
-                <li>
-                  Writeup: <a href="{{project.url.writeup}}">{{project.url.writeup}}</a>
-                </li>
-                <li>
-                  Code: <a ng-attr-href="{{project.url.code}}">{{project.url.code}}</a>
-                </li>
-                <li>
-                  Other: <a ng-attr-href="{{project.url.other}}">{{project.url.other}}</a>
-                </li>
-              </ul>
-            </td>
-            <td>
-              <p ng-bind="project.type"></p>
-            </td>
-            <td>
-              <p ng-bind="project.stage"></p>
-            </td>
-            <td>
-              <p ng-bind="project.notes"></p>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+  <div ng-repeat="project in projects">
+    <md-card class="md-padding" layout="vertical">
+      <md-toolbar md-theme="blue">
+   <div layout="horizontal" layout-padding>
+      <div layout-align="start" flex>
+        <h3>{{project.name}}</h3>
+      </div>
+      <div class="md-toolbar-tools" layout-align="end" flex>
+        <a href="#top">&uarr;</a>
+      </div>
     </div>
+      </md-toolbar>
+      <md-content>
+        <h3>Project Description</h3>
+        <div class="description">
+          <p>{{project.description}}</p>
+        </div>
+
+        <div class="project-info">
+          <h3>Project Information</h3>
+          <p><strong md-theme="blue">Project type</strong>: {{project.type}}</p>
+          <p><strong>Project stage</strong>: {{project.stage}}</p>
+          <p><strong>Notes</strong>: {{project.notes}}</p>
+        </div>
+
+        <div class="link-info">
+          <h3>Associated Links</h3>
+          <ul>
+            <li>
+              Writeup: <a ng-attr-href="{{project.url.writeup}}">{{project.url.writeup}}</a>
+            </li>
+            <li>
+              Code: <a ng-attr-href="{{project.url.code}}">{{project.url.code}}</a>
+            </li>
+            <li>
+              Other: <a ng-attr-href="{{project.url.other}}">{{project.url.other}}</a>
+            </li>
+          </ul>
+        </div>
+
+      </md-content>
+
+    </md-card>
   </div>
 
 </html>

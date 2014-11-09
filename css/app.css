@@ -1,0 +1,15 @@
+td:first-of-type {
+  width: 10%;
+}
+
+td:nth-of-type(2n) {
+  width: 10%;
+}
+
+td:nth-of-type(3n) {
+  width: 10%;
+}
+
+td:last-of-type {
+  width: 20%;
+}
