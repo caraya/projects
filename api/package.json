@@ -1,0 +1,26 @@
+{
+  "name": "api",
+  "version": "0.0.1",
+  "description": "learning how to code APIs",
+  "main": "app.js",
+  "scripts": {
+    "start": "node ./bin/www",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "api"
+  ],
+  "author": "carlos araya",
+  "license": "mit",
+  "dependencies": {
+    "body-parser": "^1.9.2",
+    "errorhandler": "^1.2.2",
+    "express": "^4.10.2",
+    "express-session": "^1.9.1",
+    "method-override": "^2.3.0",
+    "mongodb": "^1.4.20",
+    "morgan": "^1.5.0",
+    "multer": "^0.1.6",
+    "serve-favicon": "^2.1.6"
+  }
+}
