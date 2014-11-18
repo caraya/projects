@@ -6,8 +6,11 @@ function ($scope, $firebase) {
   var ref = new Firebase("https://project-list.firebaseio.com/");
   $scope.projects = $firebase(ref).$asArray();
   
+  // First pass at twitter auth 
   ref.authWithOAuthPopup("github", function(error, authData) {
-  
+    if (!authData) {
+      console.log(error);
+    }
   });
 
   // project attributes
