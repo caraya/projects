@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html ng-app="projectList">
+
+<head>
+  <title ng-bind="(project.appTitle)">Project List</title>
+  <!--
+  Commenting out Bootsrap as it will be replaced with material design stuff
+
+  <link href="css/bootstrap.css" rel="stylesheet" />
+  <link href="css/bootstrap-theme.css" rel="stylesheet" />
+-->
+  <script src="lib/angular.min.js"></script>
+  <script src="lib/angular-modules/angular-animate.min.js"></script>
+  <script src="lib/angular-modules/angular-aria.min.js"></script>
+  <script src="lib/hammer.js"></script>
+  <script src="lib/angular-hammer.js"></script>
+  <script src="lib/angular-material.min.js"></script>
+  <script src='https://cdn.firebase.com/js/client/1.1.1/firebase.js'></script>
+  <script src='https://cdn.firebase.com/libs/angularfire/0.8.0/angularfire.min.js'></script>
+  <!-- material resources -->
+  <link href="css/angular-material.css" rel="stylesheet" />
+  <!-- material theme -->
+  <link href="css/blue-theme.css" rel="stylesheet" />
+  <link href="css/blue-grey-theme.css" rel="stylesheet" />
+  <!-- app-specific css beyond bootstrap-->
+  <link href="css/app.css" rel="stylesheet" />
+  <script>
+    projectApp = angular.module("projectList", ["ngMaterial", "firebase"]);
+
+    projectApp.controller("projectListCtrl", ['$scope','$firebase',
+    function ($scope, $firebase) {
+        var ref = new Firebase("https://project-list.firebaseio.com/");
+        $scope.projects = $firebase(ref).$asArray();
+        $scope.appTitle = "Portfolio Project List";
+        $scope.appAuthor = "Carlos Araya";
+    }
+  ]);
+  </script>
+</head>
+
+<body ng-controller="projectListCtrl">
+  <md-toolbar md-theme="blue">
+    <div layout="horizontal" layout-padding>
+      <div layout-align="start" flex>
+        <h3 id="top">{{appTitle}}</h3>
+      </div>
+      <div class="md-toolbar-tools" layout-align="end" flex>
+        <md-button class="md-raised md-primary">
+          <md-tooltip>
+            Sort
+          </md-tooltip>
+          <md-icon icon="img/icons/new.svg">
+        </md-button>
+        <md-button class="md-raised md-primary">
+          <md-tooltip>
+            New Project
+          </md-tooltip>
+          <md-icon icon="img/icons/new.svg">
+          </md-icon>
+        </md-button>
+      </div>
+    </div>
+  </md-toolbar>
+  <a name="top" id="top">&nbsp;</a>
+  <md-card class="md-padding">
+    <p>Projects and ideas I'm currently working on</p>
+    <p>Currently there are {{projects.length}} projects in the list</p>
+  </md-card>
+
+  <div ng-repeat="project in projects">
+    <md-card class="md-padding" layout="vertical">
+      <md-toolbar md-theme="blue">
+        <div layout="horizontal" layout-padding>
+          <div layout-align="start" flex>
+            <h3>{{project.name}}</h3>
+          </div>
+          <div class="md-toolbar-tools" layout-align="end" flex>
+            <a href="#top">&uarr;</a>
+          </div>
+        </div>
+      </md-toolbar>
+      <md-content>
+        <h3>Project Description</h3>
+        <div class="description">
+          <p>{{project.description}}</p>
+        </div>
+
+        <div class="project-info">
+          <h3>Project Information</h3>
+          <p><strong md-theme="blue">Project type</strong>: {{project.type}}</p>
+          <p><strong>Project stage</strong>: {{project.stage}}</p>
+          <p><strong>Notes</strong>: {{project.notes}}</p>
+        </div>
+
+        <div class="link-info">
+          <h3>Associated Links</h3>
+          <ul>
+            <li>
+              Writeup: <a ng-attr-href="{{project.url.writeup}}">{{project.url.writeup}}</a>
+            </li>
+            <li>
+              Code: <a ng-attr-href="{{project.url.code}}">{{project.url.code}}</a>
+            </li>
+            <li>
+              Other: <a ng-attr-href="{{project.url.other}}">{{project.url.other}}</a>
+            </li>
+          </ul>
+        </div>
+
+      </md-content>
+
+    </md-card>
+  </div>
+
+</html>

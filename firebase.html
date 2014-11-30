@@ -20,36 +20,109 @@
 
       <p>Currently there are <span class="label label-default">{{projects.length}}</span> projects in the list at different stages of completion (see the stage column for more inforation).</p>
 
-    <div class='panel' id='tool-section' class='tool-section'>
-      <button 
-              type="button" 
-              class="btn btn-primary btn-lg" 
-              id="logIn" 
-              ng-click="logIn()">
-        Log In
-      </button>
-      <button 
-              type="button" 
-              class="btn btn-primary btn-lg" 
-              id="logOut" 
-              ng-click="logOut()">
-        Log Out
-      </button>
-      <button 
-              type="button" 
-              class="btn btn-primary btn-lg" 
-              id="show-form-btn" 
-              ng-click="showProjectForm()">
-        Show Project Form
-      </button>
-    </div>
-    <div class="panel">
-      <span id="message-window" class="message-window"></span>
-    </div>
-    
+      <div class='panel' id='tool-section' class='tool-section'>
+        <button type="button" class="btn btn-primary btn-lg" id="logIn" ng-click="logIn()">
+          Log In
+        </button>
+        <button type="button" class="btn btn-primary btn-lg" id="logOut" ng-click="logOut()">
+          Log Out
+        </button>
+        <button type="button" class="btn btn-primary btn-lg" id="show-form-btn" ng-click="showProjectForm()">
+          Show Project Form
+        </button>
+      </div>
+      <div class="panel">
+        <span id="message-window" class="message-window"></span>
+      </div>
+
     </div>
 
+    <div class="panel newProjectPanel" id="newProjectPanel">
+      <h2>Add New Project</h2>
+      <form class="form-horizontal" role="form">
+        <fieldset class="fieldset-general">
+          <legend>Basic Information</legend>
+          <div class="form-group">
+            <label for="projectName" class="col-sm-4 control-label">Project Name</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="projectName" ng-model="name" placeholder="Project Name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="description" class="col-sm-4 control-label">Project Description</label>
+            <div class="col-sm-8">
+              <textarea class="form-control" id="projectDescription" ng-model="description" rows="3">
+              </textarea>
+            </div>
+          </div>
+        </fieldset>
 
+        <fieldset>
+          <legend>Project URLs</legend>
+          <div class="form-group">
+            <label for="codeUrl" class="col-sm-4 control-label">Code URL</label>
+            <div class="col-sm-8">
+              <input type="url" class="form-control" id="codeUrl" ng-model="codeUrl" placeholder="Code URL">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="writeupUrl" class="col-sm-4 control-label">Writeup URL</label>
+            <div class="col-sm-8">
+              <input type="url" class="form-control" id="writeupUrl" ng-model="writeupUrl" placeholder="Writeup URL">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="otherUrl" class="col-sm-4 control-label">Other URL</label>
+            <div class="col-sm-8">
+              <input type="url" class="form-control" id="otherUrl" ng-model="otherUrl" placeholder="Other URL">
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Other Project Information</legend>
+          
+          <div class="form-group">
+            <label for="projectStatus" class="col-sm-4 control-label">Project Status</label>
+            <div class="col-sm-8">
+              <select class="form-control" ng-model='status'>
+                <option>Concept</option>
+                <option>Research</option>
+                <option>Implementation</option>
+                <option>Released</option>
+                <option>Published</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="projectType" class="col-sm-4 control-label">Project Type</label>
+            <div class="col-sm-8">
+              <select class="form-control" ng-model="type">
+                <option>Code</option>
+                <option>Writing</option>
+                <option>Other (see notes)</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="notes" class="col-sm-4 control-label">Project Notes</label>
+            <div class="col-sm-8">
+              <textarea class="form-control" id="projectNotes" ng-model="notes" rows="3">
+              </textarea>
+            </div>
+          </div>
+        </fieldset>
+        <div class="form-group">
+          <div class="col-sm-offset-11 col-sm-1">
+            <button type="submit" class="btn btn-primary">Sign in</button>
+          </div>
+        </div>
+      </form>
+    </div>
 
 
 

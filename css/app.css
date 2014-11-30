@@ -16,3 +16,12 @@ table {
 .message-window {
   font-weight: bold;
 }
+
+.newProjectPanel {
+  display: none;
+}
+
+legend {
+  width:auto; /* Or auto */
+  border-bottom: 1px solid #428bca;
+}

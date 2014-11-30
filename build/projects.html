@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html ng-app="projectList">
+
+<head>
+  <title>Project List</title>
+  <link href="css/bootstrap.css" rel="stylesheet" />
+  <link href="css/bootstrap-theme.css" rel="stylesheet" />
+  <!-- app-specific css beyond bootstrap-->
+  <link href="css/app.css" rel="stylesheet" />
+  <script src="lib/angular.js"></script>
+  <script>
+    var projectApp = angular.module("projectList", []);
+  </script>
+  <script src="js/projectlist.js"></script>
+</head>
+
+<body ng-controller="projectListCtrl">
+  <div class="container-fluid">
+    <div class="jumbotron">
+      <h1>{{appTitle}}</h1>
+
+      <p>Projects and ideas I'm currently working on</p>
+
+      <p>Currently there are <span class="label label-default">{{projects.length}}</span> projects in the list</p>
+    </div>
+    <div class="panel">
+      <h2>Add new project</h2>
+
+      <form class="form-horizontal">
+        <div class="control-group">
+          <label class="control-label" for="inputTitle">Title</label>
+          <div class="controls">
+            <input type="text" placeholder="Title" ng-model="currentStory.title">
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="inputDescription">Description</label>
+          <div class="controls">
+            <textarea id="inputDescription" placeholder="Description" rows="3" cols="80" ng-model="currentStory.description">
+            </textarea>
+          </div>
+        </div>
+        <div>
+          <div class="control-group">
+            <label class="control-label" for="inputUrlWriteup">Writeup URL</label>
+            <div class="controls">
+              <input type="text" placeholder="Writeup URL" ng-model="currentStory.url.writeup">
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="inputUrlCode">Code URL</label>
+            <div class="controls">
+              <input type="text" placeholder="Code URL" ng-model="currentStory.url.code">
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="inputUrlOther">Other URL</label>
+            <div class="controls">
+              <input type="text" placeholder="Other URL" ng-model="currentStory.url.other">
+            </div>
+          </div>
+        </div>
+        <div><!-- eventually we'll figure out how to pull this right -->
+        <div class="control-group">
+          <label class="control-label" for="inputType">Project Type</label>
+          <div class="controls"></div>
+        </div>
+        </div>
+      </form>
+      <!-- 
+        Model to build form from
+
+       "name": "Material Component Experiment",
+       "description": "Creating a the web front end for a web application using Web Compontents and Google Paper components. Learn How to use components and how to integrate Paper’s material look ",
+       "url": {
+         "writeup": "https://github.com/caraya/material-component",
+         "code": "",
+         "other": ""
+       },
+       "type": "Code",
+       "stage": "Early Research and code",
+       "notes": ""
+      -->
+    </div>
+    <div class="panel">
+      <a class="btn btn-inverse" ng-click="createProject()">Create Project</a>
+    </div>
+    <div class="panel">
+      <h2>Current Project List</h2>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Project Name</th>
+            <th>Description</th>
+            <th>URL</th>
+            <th>Type</th>
+            <th>Stage</th>
+            <th>Notes (if any)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="project in projects">
+            <td>
+              <p>{{project.name}}</p>
+            </td>
+            <td>
+              <p>{{project.description}}</p>
+            </td>
+            <td>
+              <ul class="list-unstyled">
+                <li>
+                  Writeup: <a href="{{project.url.writeup}}">{{project.url.writeup}}</a>
+                </li>
+                <li>
+                  Code: <a ng-attr-href="{{project.url.code}}">{{project.url.code}}</a>
+                </li>
+                <li>
+                  Other: <a ng-attr-href="{{project.url.other}}">{{project.url.other}}</a>
+                </li>
+              </ul>
+            </td>
+            <td>
+              <p ng-bind="project.type"></p>
+            </td>
+            <td>
+              <p ng-bind="project.stage"></p>
+            </td>
+            <td>
+              <p ng-bind="project.notes"></p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</html>
