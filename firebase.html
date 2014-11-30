@@ -14,17 +14,46 @@
 </head>
 
 <body ng-controller="projectListCtrl">
-  <div class="jumbotron">
-    <h1>{{appTitle}}</h1>
-
-    <p>Projects and ideas I'm currently working on</p>
-
-    <p>Currently there are <span class="label label-default">{{projects.length}}</span> projects in the list</p>
-  </div>
   <div class="container-fluid">
+    <div class="panel">
+      <h1>{{appTitle}}</h1>
+
+      <p>Currently there are <span class="label label-default">{{projects.length}}</span> projects in the list at different stages of completion (see the stage column for more inforation).</p>
+
+    <div class='panel' id='tool-section' class='tool-section'>
+      <button 
+              type="button" 
+              class="btn btn-primary btn-lg" 
+              id="logIn" 
+              ng-click="logIn()">
+        Log In
+      </button>
+      <button 
+              type="button" 
+              class="btn btn-primary btn-lg" 
+              id="logOut" 
+              ng-click="logOut()">
+        Log Out
+      </button>
+      <button 
+              type="button" 
+              class="btn btn-primary btn-lg" 
+              id="show-form-btn" 
+              ng-click="showProjectForm()">
+        Show Project Form
+      </button>
+    </div>
+    <div class="panel">
+      <span id="message-window" class="message-window"></span>
+    </div>
+    
+    </div>
+
+
+
+
 
     <div class="panel">
-      <h2>Current Project List</h2>
       <table class="table table-striped">
         <thead>
           <tr>
