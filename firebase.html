@@ -124,8 +124,6 @@
       </form>
     </div>
 
-
-
     <div class="panel">
       <table class="table table-striped">
         <thead>
@@ -136,6 +134,7 @@
             <th>Type</th>
             <th>Stage</th>
             <th>Notes (if any)</th>
+            <th>&nbsp;</th>
           </tr>
         </thead>
         <tbody>
@@ -167,6 +166,15 @@
             </td>
             <td>
               <p ng-bind="project.notes"></p>
+            </td>
+            <td class="text-center" style="vertical-align: middle;">
+              <button
+                      type="button"
+                      class="btn btn-primary btn-xs"
+                      class="edit-button"
+                      ng-click="editProject(project)">
+                edit
+              </button>
             </td>
           </tr>
         </tbody>
