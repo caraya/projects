@@ -25,3 +25,11 @@ legend {
   width:auto; /* Or auto */
   border-bottom: 1px solid #428bca;
 }
+
+.project-info {
+  border: 1px solid #888;
+}
+
+.project-info .row {
+  padding: 1em;
+}
