@@ -7,7 +7,8 @@ var projectApp,
   Firebase,
   projects;
 
-projectApp = angular.module('projectList', ['firebase'])
+projectApp = angular.module('projectList', ['firebase', 'ngAria', 'ngSanitize',
+  'btford.markdown'])
   .controller('projectListCtrl', ['$scope', '$firebase', projectListCtrl]);
 
 function projectListCtrl($scope, $firebase) {
@@ -87,27 +88,31 @@ function projectListCtrl($scope, $firebase) {
   };
 
   // add new project to firebase
-  $scope.createProject = function ($scope) {
-/*
-    var pid = ref.length + 1;
-    // Get the Firebase reference of the item
-    var itemRef = new Firebase('https://project-list.firebaseio.com/' + pid);
+  $scope.createProject = function () {
+    var NP = {
+      //id: projectsArray.length + 1,
+      name: newProject.name.value,
+      description: newProject.description.value,
+      type: newProject.type.value,
+      url: {
+        code: newProject.codeURL.value,
+        writeup: newProject.writeupURL.value,
+        other: newProject.otherURL.value
+      },
+      notes: newProject.notes.value,
+      stage: newProject.status.value,
 
-    $firebase(itemRef).$set({
-      pid: pid,
-      name: $scope.name,
-      description: $scope.description,
-      type: $scope
-    });
-
-    $scope.todoName = '';
-*/
+    };
+    projectsArray.$add(NP);
+    message.innerHTML = '';
+    message.innerHTML = 'New Project ' + newProject.name.value + ' added successfully';
+    console.log(NP);
   };
 
   // edit and existing project
   $scope.editProject = function () {};
 
-  $scope.remove = function (id) {
-    projects.$remove(id);
+  $scope.removeProject = function (index) {
+    var id = projectsArray[index];
   };
 }

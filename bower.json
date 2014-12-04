@@ -1,0 +1,19 @@
+{
+  "name": "project-list-angular",
+  "version": "0.0.1",
+  "homepage": "https://github.com/caraya/project-list-angular",
+  "authors": [
+    "Carlos Araya <carlos.araya@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-markdown-directive": "~0.3.0"
+  }
+}
