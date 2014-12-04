@@ -7,8 +7,16 @@ var projectApp,
   Firebase,
   projects;
 
-projectApp = angular.module('projectList', ['firebase', 'ngAria', 'ngSanitize',
-  'btford.markdown'])
+projectApp = angular.module('projectList', ['firebase', 'ngAria', 'hc.marked'])
+  .config(['markedProvider', function(markedProvider) {
+      markedProvider.setOptions({
+        gfm: true,
+        tables: true,
+        highlight: function (code) {
+          return hljs.highlightAuto(code).value;
+        }
+      });
+    }])
   .controller('projectListCtrl', ['$scope', '$firebase', projectListCtrl]);
 
 function projectListCtrl($scope, $firebase) {

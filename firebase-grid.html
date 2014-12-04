@@ -5,16 +5,27 @@
   <title>Project List</title>
   <link href="css/bootstrap.css" rel="stylesheet" />
   <link href="css/bootstrap-theme.css" rel="stylesheet" />
-  <link href='//fonts.googleapis.com/css?family=RobotoDraft:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en' rel='stylesheet'>
   <!-- app-specific css beyond bootstrap-->
+  <link href='//fonts.googleapis.com/css?family=RobotoDraft:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en' rel='stylesheet'>
+  <!-- CSS for hc.marked highlight -->
+  <link href="css/default.css" rel="styelsheet" />
+  <!-- App specific styles -->
   <link href="css/app.css" rel="stylesheet" />
+  <!-- core Angular library -->
   <script src="lib/angular.min.js"></script>
+  <!-- Firebase Library -->
   <script src='https://cdn.firebase.com/js/client/1.1.1/firebase.js'></script>
+  <!-- Angularfire support library -->
   <script src='https://cdn.firebase.com/libs/angularfire/0.8.0/angularfire.min.js'></script>
-  <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+  <!-- Angular ARIA module -->
   <script src="lib/angular-modules/angular-aria.min.js"></script>
-  <script src="bower_components/showdown/compressed/showdown.js"></script>
-  <script src="bower_components/angular-markdown-directive/markdown.js"></script>
+  <!-- JShighlight library -->
+  <script src="lib/highlight.pack.js"></script>
+  <!-- marked.js markdown library -->
+  <script src="bower_components/marked/lib/marked.js"></script>
+  <!-- angular-marked library -->
+  <script src="bower_components/angular-marked/angular-marked.js"></script>
+  <!-- app specific scripts -->
   <script src="js/projectlist-fb.js"></script>
 </head>
 
@@ -183,7 +194,9 @@
 
           <div class="content">
             <h3>Project Description</h3>
-            <btf-markdown ng-bind="project.description"></btf-markdown>
+              <div 
+                   marked="project.description">
+              </div>
           </div>
         </div>
       </div>
@@ -218,7 +231,10 @@
         <div class="col-md-10">
           <h3>Project Notes</h3>
           <div>
-            <btf-markdown ng-bind="project.notes"></btf-markdown>
+              <div 
+                   marked="project.notes">
+              </div>
+
           </div>
         </div>
       </div>

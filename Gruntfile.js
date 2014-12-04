@@ -60,6 +60,7 @@
             {
               expand: true,
               src: [
+                  'bower_components/**/*',
                   'js/*.js',
                   'css/*.css',
                   'lib/**/*',
@@ -90,6 +91,7 @@
         // gh-pages` branch (the default)
         // We have to specifically remove node_modules
               src: [
+                  'bower_components/**/*',
                   'js/*.js',
                   'css/*.css',
                   'lib/**/*',

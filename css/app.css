@@ -16,6 +16,7 @@ table {
 
 .message-window {
   font-weight: bold;
+  text-align: center;
 }
 
 .newProjectPanel {

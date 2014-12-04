@@ -1,5 +1,6 @@
-body {
-  font-family: "Open Sans", sans-serif;
+html {
+  font-family: "Roboto Draft", sans-serif;
+  font-size: 16px;
 }
 
 table {
@@ -15,6 +16,7 @@ table {
 
 .message-window {
   font-weight: bold;
+  text-align: center;
 }
 
 .newProjectPanel {
@@ -32,4 +34,8 @@ legend {
 
 .project-info .row {
   padding: 1em;
+}
+
+.separator {
+  margin-bottom: 1.5em;
 }

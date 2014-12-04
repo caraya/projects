@@ -5,11 +5,19 @@
   <title>Project List</title>
   <link href="css/bootstrap.css" rel="stylesheet" />
   <link href="css/bootstrap-theme.css" rel="stylesheet" />
+  <link href='//fonts.googleapis.com/css?family=RobotoDraft:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en' rel='stylesheet'>
   <!-- app-specific css beyond bootstrap-->
   <link href="css/app.css" rel="stylesheet" />
+  <!-- CSS for hc.marked highlight -->
+  <link href="css/default.css" rel="styelsheet" />
   <script src="lib/angular.min.js"></script>
   <script src='https://cdn.firebase.com/js/client/1.1.1/firebase.js'></script>
   <script src='https://cdn.firebase.com/libs/angularfire/0.8.0/angularfire.min.js'></script>
+  <script src="lib/angular-modules/angular-aria.min.js"></script>
+  <!-- Libs for hc.marked directive -->
+  <script src="lib/highlight.pack.js"></script>
+  <script src="bower_components/marked/lib/marked.js"></script>
+  <script src="bower_components/angular-marked/angular-marked.js"></script>
   <script src="js/projectlist-fb.js"></script>
 </head>
 
@@ -21,15 +29,17 @@
       <p>Currently there are <span class="label label-default">{{projects.length}}</span> projects in the list at different stages of completion (see the stage column for more inforation).</p>
 
       <div class='panel' id='tool-section' class='tool-section'>
-        <button type="button" class="btn btn-primary btn-lg" id="logIn" ng-click="logIn()">
+      <div class="btn-group separator">
+        <button type="button" class="btn btn-primary btn-sm" id="logIn" ng-click="logIn()">
           Log In
         </button>
-        <button type="button" class="btn btn-primary btn-lg" id="logOut" ng-click="logOut()">
+        <button type="button" class="btn btn-primary btn-sm" id="logOut" ng-click="logOut()">
           Log Out
         </button>
-        <button type="button" class="btn btn-primary btn-lg" id="show-form-btn" ng-click="showProjectForm()">
+        <button type="button" class="btn btn-primary btn-sm" id="show-form-btn" ng-click="showProjectForm()">
           Show Project Form
         </button>
+      </div>
       </div>
       <div class="panel">
         <span id="message-window" class="message-window"></span>
@@ -37,21 +47,33 @@
 
     </div>
 
+
     <div class="panel newProjectPanel" id="newProjectPanel">
       <h2>Add New Project</h2>
-      <form class="form-horizontal" role="form">
+      <form class="form-horizontal" role="form" name="newProject">
         <fieldset class="fieldset-general">
           <legend>Basic Information</legend>
           <div class="form-group">
             <label for="projectName" class="col-sm-4 control-label">Project Name</label>
             <div class="col-sm-8">
-              <input type="text" class="form-control" id="projectName" ng-model="name" placeholder="Project Name">
+              <input
+                     type="text"
+                     class="form-control"
+                     id="projectName"
+                     ng-model="name"
+                     name="name"
+                     placeholder="Project Name">
             </div>
           </div>
           <div class="form-group">
             <label for="description" class="col-sm-4 control-label">Project Description</label>
             <div class="col-sm-8">
-              <textarea class="form-control" id="projectDescription" ng-model="description" rows="3">
+              <textarea
+                        class="form-control"
+                        id="projectDescription"
+                        ng-model="description"
+                        name="description"
+                        rows="3">
               </textarea>
             </div>
           </div>
@@ -62,32 +84,49 @@
           <div class="form-group">
             <label for="codeUrl" class="col-sm-4 control-label">Code URL</label>
             <div class="col-sm-8">
-              <input type="url" class="form-control" id="codeUrl" ng-model="codeUrl" placeholder="Code URL">
+              <input
+                     type="url"
+                     class="form-control"
+                     id="codeUrl" ng-model="codeUrl"
+                     name="codeURL"
+                     placeholder="Code URL">
             </div>
           </div>
 
           <div class="form-group">
             <label for="writeupUrl" class="col-sm-4 control-label">Writeup URL</label>
             <div class="col-sm-8">
-              <input type="url" class="form-control" id="writeupUrl" ng-model="writeupUrl" placeholder="Writeup URL">
+              <input
+                     type="url"
+                     class="form-control"
+                     id="writeupUrl"
+                     ng-model="writeupUrl"
+                     name="writeupURL"
+                     placeholder="Writeup URL">
             </div>
           </div>
 
           <div class="form-group">
             <label for="otherUrl" class="col-sm-4 control-label">Other URL</label>
             <div class="col-sm-8">
-              <input type="url" class="form-control" id="otherUrl" ng-model="otherUrl" placeholder="Other URL">
+              <input
+                     type="url"
+                     class="form-control"
+                     id="otherUrl"
+                     ng-model="otherUrl"
+                     name="otherURL"
+                     placeholder="Other URL">
             </div>
           </div>
         </fieldset>
 
         <fieldset>
           <legend>Other Project Information</legend>
-          
+
           <div class="form-group">
             <label for="projectStatus" class="col-sm-4 control-label">Project Status</label>
             <div class="col-sm-8">
-              <select class="form-control" ng-model='status'>
+              <select class="form-control" ng-model='status' name="status">
                 <option>Concept</option>
                 <option>Research</option>
                 <option>Implementation</option>
@@ -100,31 +139,36 @@
           <div class="form-group">
             <label for="projectType" class="col-sm-4 control-label">Project Type</label>
             <div class="col-sm-8">
-              <select class="form-control" ng-model="type">
+              <select class="form-control" ng-model="type" name="type">
                 <option>Code</option>
                 <option>Writing</option>
                 <option>Other (see notes)</option>
               </select>
             </div>
           </div>
-          
+
           <div class="form-group">
             <label for="notes" class="col-sm-4 control-label">Project Notes</label>
             <div class="col-sm-8">
-              <textarea class="form-control" id="projectNotes" ng-model="notes" rows="3">
+              <textarea
+                        class="form-control"
+                        id="projectNotes"
+                        ng-model="notes"
+                        name="notes"
+                        rows="3">
               </textarea>
             </div>
           </div>
         </fieldset>
         <div class="form-group">
           <div class="col-sm-offset-11 col-sm-1">
-            <button type="submit" class="btn btn-primary">Sign in</button>
+            <button type="submit" class="btn btn-primary" ng-click="createProject()">Create Project</button>
           </div>
         </div>
       </form>
     </div>
-
-    <div class="panel">
+    
+        <div class="panel">
       <table class="table table-striped">
         <thead>
           <tr>
@@ -140,10 +184,15 @@
         <tbody>
           <tr ng-repeat="project in projects">
             <td>
-              <p>{{project.name}}</p>
+              <div 
+                   marked="project.name">
+              </div>
             </td>
             <td>
-              <p>{{project.description}}</p>
+              <div 
+                   marked="project.description">
+              </div>
+<marked ng-bind="project.description"></marked>
             </td>
             <td>
               <ul class="list-unstyled">
@@ -165,7 +214,9 @@
               <p ng-bind="project.stage"></p>
             </td>
             <td>
-              <p ng-bind="project.notes"></p>
+              <div 
+                   marked="project.notes">
+              </div>
             </td>
             <td class="text-center" style="vertical-align: middle;">
               <button
@@ -179,7 +230,7 @@
           </tr>
         </tbody>
       </table>
-    </div>
-  </div>
 
+  </div>
+  </body>
 </html>
