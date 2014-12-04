@@ -1,19 +1,35 @@
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
+table {
+  table-layout: fixed;
+  word-wrap: break-word;
+}
+
 .panel {
-  margin: 0 40px;
+  margin-right: 4em;
+  margin-left: 4em;
+  margin-bottom: 2em;
 }
 
-td:first-of-type {
-  width: 10%;
+.message-window {
+  font-weight: bold;
 }
 
-td:nth-of-type(2n) {
-  width: 10%;
+.newProjectPanel {
+  display: none;
 }
 
-td:nth-of-type(3n) {
-  width: 10%;
+legend {
+  width:auto; /* Or auto */
+  border-bottom: 1px solid #428bca;
 }
 
-td:last-of-type {
-  width: 20%;
+.project-info {
+  border: 1px solid #888;
+}
+
+.project-info .row {
+  padding: 1em;
 }
