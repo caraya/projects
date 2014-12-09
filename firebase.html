@@ -3,9 +3,9 @@
 
 <head>
   <title>Project List</title>
+  <link href='//fonts.googleapis.com/css?family=RobotoDraft:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en' rel='stylesheet'>
   <link href="css/bootstrap.css" rel="stylesheet" />
   <link href="css/bootstrap-theme.css" rel="stylesheet" />
-  <link href='//fonts.googleapis.com/css?family=RobotoDraft:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en' rel='stylesheet'>
   <!-- app-specific css beyond bootstrap-->
   <link href="css/app.css" rel="stylesheet" />
   <!-- CSS for hc.marked highlight -->
@@ -184,15 +184,14 @@
         <tbody>
           <tr ng-repeat="project in projects">
             <td>
-              <div 
-                   marked="project.name">
+              <div>
+                   {{project.name}}
               </div>
             </td>
             <td>
               <div 
                    marked="project.description">
               </div>
-<marked ng-bind="project.description"></marked>
             </td>
             <td>
               <ul class="list-unstyled">
@@ -208,10 +207,10 @@
               </ul>
             </td>
             <td>
-              <p ng-bind="project.type"></p>
+              <p>{{project.type}}</p>
             </td>
             <td>
-              <p ng-bind="project.stage"></p>
+              <p>{{project.stage}}</p>
             </td>
             <td>
               <div 
@@ -219,18 +218,26 @@
               </div>
             </td>
             <td class="text-center" style="vertical-align: middle;">
-              <button
+                  <div class="btn-group">
+                    <button
                       type="button"
                       class="btn btn-primary btn-xs"
                       class="edit-button"
-                      ng-click="editProject(project)">
+                      ng-click="editProject($id)">
                 edit
               </button>
+              <button
+                      type="button"
+                      class="btn btn-primary btn-xs"
+                      class="delete-button"
+                      ng-click="deleteProject($id)">
+                delete
+              </button>
+              </div>
             </td>
           </tr>
         </tbody>
       </table>
-
   </div>
   </body>
 </html>

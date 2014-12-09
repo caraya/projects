@@ -1,11 +1,17 @@
 html {
-  font-family: "Roboto Draft", sans-serif;
+  font-family: "RobotoDraft", sans-serif;
+  font-weight: 300;
   font-size: 16px;
 }
 
 table {
   table-layout: fixed;
   word-wrap: break-word;
+}
+
+th {
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 .panel {

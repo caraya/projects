@@ -55,9 +55,8 @@ function projectListCtrl($scope, $firebase) {
         successSpan.innerHTML = 'Login Successful';
         message.appendChild(successSpan);
         message.innerHTML.append('Login Successful');
-        /*console.log(
-        'User ID: ' + authData.uid + ', Provider: ' + authData.provider);*/
-
+        console.log(
+        'User ID: ' + authData.uid + ', Provider: ' + authData.provider);
       }
     });
   };
@@ -97,7 +96,8 @@ function projectListCtrl($scope, $firebase) {
 
   // add new project to firebase
   $scope.createProject = function () {
-    var NP = {
+    var newP ={};
+    newP = {
       //id: projectsArray.length + 1,
       name: newProject.name.value,
       description: newProject.description.value,
@@ -111,16 +111,17 @@ function projectListCtrl($scope, $firebase) {
       stage: newProject.status.value,
 
     };
-    projectsArray.$add(NP);
+    projectsArray.$add(newP);
     message.innerHTML = '';
     message.innerHTML = 'New Project ' + newProject.name.value + ' added successfully';
-    console.log(NP);
+    console.log(newP);
+    window.location.reload();
   };
 
   // edit and existing project
   $scope.editProject = function () {};
 
-  $scope.removeProject = function (index) {
-    var id = projectsArray[index];
+  $scope.removeProject = function ($id) {
+    var id = projectsArray.$id;
   };
 }
