@@ -1,0 +1,2 @@
+projectApp = angular.module('projectsCore', []);
+

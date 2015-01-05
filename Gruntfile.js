@@ -23,26 +23,6 @@
         }
       },
 
-      autoprefixer: {
-        options: {
-          browsers: ['last 2 versions']
-        },
-        main: {
-          files: [{
-            expand: true,
-            cwd: 'css',
-            src: [
-              '*.css', 
-              '!*.prefixed.css',
-              '!*.min.css'
-            ],
-            dest: 'css',
-            ext: '.prefixed.css',
-            extDot: 'last'
-          }]
-        }
-      },
-
       //Can't seem to make the copy task create the directory if it doesn't
       // exist so we go to another task to create the fn directory
 
@@ -59,15 +39,7 @@
           files: [
             {
               expand: true,
-              src: [
-                  'bower_components/**/*',
-                  'js/*.js',
-                  'css/*.css',
-                  'lib/**/*',
-                  '*.html',
-                  'controllers/**/*',
-                  'directives/**/*'
-                ],
+              src: [ 'app/**/*' ],
               dest: 'build/'
             }
           ]
@@ -75,10 +47,7 @@
       },
 
       clean: {
-        production: [
-          'css/*.prefixed.css',
-          'build/'
-        ]
+        production: [ 'build/']
       },
 
       'gh-pages': {
@@ -90,15 +59,8 @@
         // These files will get pushed to the `
         // gh-pages` branch (the default)
         // We have to specifically remove node_modules
-              src: [
-                  'bower_components/**/*',
-                  'js/*.js',
-                  'css/*.css',
-                  'lib/**/*',
-                  '*.html',
-                  'controllers/**/*',
-                  'directives/**/*'
-                ],      },
+              src: ['build/**/*'],
+      },
 
       watch: {
         options: {

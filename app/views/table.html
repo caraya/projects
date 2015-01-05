@@ -1,0 +1,69 @@
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Project Name</th>
+            <th>Description</th>
+            <th>URL</th>
+            <th>Type</th>
+            <th>Stage</th>
+            <th>Notes (if any)</th>
+            <th>&nbsp;</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="project in projects">
+            <td>
+              <div>
+                   {{project.name}}
+              </div>
+            </td>
+            <td>
+              <div
+                   marked="project.description">
+              </div>
+            </td>
+            <td>
+              <ul class="list-unstyled">
+                <li>
+                  Writeup: <a href="{{project.url.writeup}}">{{project.url.writeup}}</a>
+                </li>
+                <li>
+                  Code: <a ng-attr-href="{{project.url.code}}">{{project.url.code}}</a>
+                </li>
+                <li>
+                  Other: <a ng-attr-href="{{project.url.other}}">{{project.url.other}}</a>
+                </li>
+              </ul>
+            </td>
+            <td>
+              <p>{{project.type}}</p>
+            </td>
+            <td>
+              <p>{{project.stage}}</p>
+            </td>
+            <td>
+              <div
+                   marked="project.notes">
+              </div>
+            </td>
+            <td class="text-center" style="vertical-align: middle;">
+                  <div class="btn-group">
+                    <button
+                      type="button"
+                      class="btn btn-primary btn-xs"
+                      class="edit-button"
+                      ng-click="editProject($id)">
+                edit
+              </button>
+              <button
+                      type="button"
+                      class="btn btn-primary btn-xs"
+                      class="delete-button"
+                      ng-click="deleteProject($id)">
+                delete
+              </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
