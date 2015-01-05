@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html ng-app='projectCore'>
+
+<head>
+  <title>Project List</title>
+  <link href='//fonts.googleapis.com/css?family=RobotoDraft:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en' rel='stylesheet'>
+  <link href="css/bootstrap.css" rel="stylesheet" />
+  <link href="css/bootstrap-theme.css" rel="stylesheet" />
+  <!-- higlightjs styles -->
+  <link href="css/default.css">
+  <!-- app-specific css beyond bootstrap-->
+  <link href="css/app.css" rel="stylesheet" />
+  <script src="bower_components/angular/angular.js"></script>
+  <!-- Mongolab/Promise library-->
+  <script src="bower_components/angularjs-mongolab-promise/src/angular-mongolab.js"></script>
+  <!-- hc.marked -->
+  <script src="bower_components/marked/lib/marked.js"></script>
+  <script src="bower_components/highlightjs/highlight.pack.js"></script>
+  <script src="bower_components/angular-marked/angular-marked.js"></script>
+  <!-- app specific script -->
+  <script src="js/core.js"></script>
+</head>
+
+<body ng-controller="ProjectListController">
+  <div class="container-fluid">
+    <div class="well well-primary">
+      <div class="content">
+      <h1>{{appTitle}}</h1>
+      <div marked ng-include="'intro.html'"></div>
+      </div>
+    </div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Project Name</th>
+          <th>Description</th>
+          <th>URL</th>
+          <th>Type</th>
+          <th>Stage</th>
+          <th>Notes (if any)</th>
+          <th>&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="project in projects">
+          <td>
+            <div>
+              {{project.name}}
+            </div>
+          </td>
+          <td>
+            <div marked="project.description"></div>
+          </td>
+          <td>
+            <ul class="list-unstyled">
+              <li>
+                Writeup: <a ng-attr-href="{{project.url.writeup}}">{{project.url.writeup}}</a>
+              </li>
+              <li>
+                Code: <a ng-attr-href="{{project.url.code}}">{{project.url.code}}</a>
+              </li>
+              <li>
+                Other: <a ng-attr-href="{{project.url.other}}">{{project.url.other}}</a>
+              </li>
+            </ul>
+          </td>
+          <td>
+            <p>{{project.type}}</p>
+          </td>
+          <td>
+            <p>{{project.stage}}</p>
+          </td>
+          <td>
+            <div marked="project.notes"></div>
+          </td>
+          <td class="text-center" style="vertical-align: middle;">
+            <div class="btn-group">
+              <button type="button" class="btn btn-primary btn-xs" class="edit-button" ng-click="editProject($id)">
+                edit
+              </button>
+              <button type="button" class="btn btn-primary btn-xs" class="delete-button" ng-click="deleteProject($id)">
+                delete
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+</body>
+
+</html>
