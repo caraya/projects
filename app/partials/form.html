@@ -78,11 +78,13 @@
       </div>
     </fieldset>
     <div class="form-group">
-      <div class="col-sm-offset-6 col-sm-1">
-<a class="btn btn-primary" ng-click="save()" ng-disabled="!hasChanges()||form.$invalid">Save</a>
-    <a class="btn btn-warning" ng-href="#/list">Abandon</a>
-    <a class="btn btn-danger" ng-click="remove()" ng-disabled="!project.$id()">Remove</a>
+      <div class="col-sm-offset-10 col-sm-2">
+        <button type="button" class="btn btn-primary" ng-click="save()">Save</button>
+        <button type="button" class="btn btn-warning" ng-href="#/grid">Cancel</button>
       </div>
+<!--
+<a class="btn btn-danger" ng-click="remove()" ng-disabled="!project.$id()">Remove</a>
+-->
     </div>
   </form>
 </div>

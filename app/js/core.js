@@ -13,7 +13,9 @@ var projectApp = angular.module('projectCore', ['mongolabResourceHttp', 'hc.mark
     .when('/grid', {templateUrl: 'partials/grid.html', controller: 'ProjectListController', resolve: {
       projects: function (Project) {return Project.all(); }
     }})
-
+    .when('/table', {templateUrl: 'partials/table.html', controller: 'ProjectListController', resolve: {
+      projects: function (Project) {return Project.all(); }
+    }})
     .when('/edit/:id', {templateUrl: 'partials/form.html', controller: 'ProjectFormController', resolve: {
       project: function (Project, $route) {return Project.getById($route.current.params.id); }
     }})
@@ -55,6 +57,7 @@ projectApp.controller('ProjectListController', function ($scope, Project) {
 projectApp.controller('ProjectFormController', function($scope, $location, project) {
 
     var projectCopy = angular.copy(project);
+
     var changeSuccess = function() {
       $location.path('/grid');
     };
@@ -66,7 +69,7 @@ projectApp.controller('ProjectFormController', function($scope, $location, proje
     $scope.project = project;
 
     $scope.save = function(){
-      $scope.project.$saveOrUpdate(changeSuccess, changeSuccess, changeError, changeError);
+      $scope.project.$saveOrUpdate(changeSuccess, changeError);
     };
 
     $scope.remove = function() {

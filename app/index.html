@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html ng-app='projectCore'>
+
 <head>
   <title>Project List</title>
   <link href='//fonts.googleapis.com/css?family=RobotoDraft:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en' rel='stylesheet'>
@@ -25,8 +26,17 @@
   <div class="container-fluid">
     <div class="well well-primary">
       <div class="content">
-      <h1>{{appTitle}}</h1>
-      <div marked ng-include="'intro.html'"></div>
+        <h1>{{appTitle}}</h1>
+        <div marked ng-include="'intro.html'"></div>
+      </div>
+      <div class="btn-group separator">
+        <a class="btn btn-primary btn-xs" ng-href="#/grid">
+              Grid View
+          </a>
+
+        <a class="btn btn-primary btn-xs" ng-href="#/table">
+              Table View
+          </a>
       </div>
     </div>
 
