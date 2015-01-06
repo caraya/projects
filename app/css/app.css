@@ -7,9 +7,10 @@ html {
 }
 
 */
-.content > div[marked] {
-  padding: 0 2em
+.project-info {
+  background-color: #f8f8f8;
 }
+
 table {
   table-layout: fixed;
   word-wrap: break-word;

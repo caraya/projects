@@ -69,7 +69,8 @@ projectApp.controller('ProjectFormController', function($scope, $location, proje
     $scope.project = project;
 
     $scope.save = function(){
-      $scope.project.$saveOrUpdate(changeSuccess, changeError);
+      $scope.project.$saveOrUpdate(changeSuccess, changeSuccess, changeError, changeError);
+      $location.path('/grid');
     };
 
     $scope.remove = function() {
