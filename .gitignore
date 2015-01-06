@@ -1,4 +1,5 @@
 .grunt
 api/
+node_modules/
 css/*.prefixed.css
 build/
