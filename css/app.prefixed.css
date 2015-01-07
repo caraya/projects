@@ -1,0 +1,41 @@
+html {
+  font-family: "Roboto Draft", sans-serif;
+  font-size: 16px;
+}
+
+table {
+  table-layout: fixed;
+  word-wrap: break-word;
+}
+
+.panel {
+  margin-right: 4em;
+  margin-left: 4em;
+  margin-bottom: 2em;
+}
+
+.message-window {
+  font-weight: bold;
+  text-align: center;
+}
+
+.newProjectPanel {
+  display: none;
+}
+
+legend {
+  width:auto; /* Or auto */
+  border-bottom: 1px solid #428bca;
+}
+
+.project-info {
+  border: 1px solid #888;
+}
+
+.project-info .row {
+  padding: 1em;
+}
+
+.separator {
+  margin-bottom: 1.5em;
+}

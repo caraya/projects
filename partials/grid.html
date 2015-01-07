@@ -1,0 +1,60 @@
+<div class="container-fluid">
+  <div class="panel row project-info" ng-repeat="project in projects">
+    <div class="row">
+      <div class="col-md-12">
+        <h3>{{project.name}}</h3>
+        <div class="btn-group separator">
+
+          <a class="btn btn-primary btn-xs"
+             ng-href="#/edit/{{project.$id()}}">
+              Edit Project
+          </a>
+        </div>
+
+
+        <div class="content">
+          <h3>Project Description</h3>
+          <div marked="project.description">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <h3>Project Links</h3>
+
+        <ul class="list-unstyled">
+          <li>
+            Writeup: <a href="{{project.url.writeup}}">{{project.url.writeup}}</a>
+          </li>
+          <li>
+            Code: <a ng-attr-href="{{project.url.code}}">{{project.url.code}}</a>
+          </li>
+          <li>
+            Other: <a ng-attr-href="{{project.url.other}}">{{project.url.other}}</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="col-md-6 col-md-ofset-6">
+        <h3>Project information</h3>
+        <ul class="list-unstyled">
+          <li>Type: {{project.type}}</li>
+          <li>Stage: {{project.stage}}</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-10">
+        <h3>Project Notes</h3>
+        <div>
+          <div marked="project.notes">
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

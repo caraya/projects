@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app='projectCore'>
+
+<head>
+  <title>Project List</title>
+  <link href='//fonts.googleapis.com/css?family=RobotoDraft:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en' rel='stylesheet'>
+  <link href="css/bootstrap.css" rel="stylesheet" />
+  <link href="css/bootstrap-theme.css" rel="stylesheet" />
+  <!-- higlightjs styles -->
+  <link href="css/default.css">
+  <!-- app-specific css beyond bootstrap-->
+  <link href="css/app.css" rel="stylesheet" />
+  <script src="bower_components/angular/angular.js"></script>
+  <!-- Mongolab/Promise library-->
+  <script src="bower_components/angularjs-mongolab-promise/src/angular-mongolab.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <!-- hc.marked -->
+  <script src="bower_components/marked/lib/marked.js"></script>
+  <script src="bower_components/highlightjs/highlight.pack.js"></script>
+  <script src="bower_components/angular-marked/angular-marked.js"></script>
+  <!-- app specific script -->
+  <script src="js/core.js"></script>
+</head>
+
+<body ng-controller="ProjectListController">
+  <div class="container-fluid">
+    <div class="well well-primary">
+      <div class="content">
+        <h1>{{appTitle}}</h1>
+        <div marked ng-include="'intro.html'"></div>
+      </div>
+      <div class="btn-group separator">
+        <a class="btn btn-primary btn-xs" ng-href="#/grid">
+              Grid View
+          </a>
+
+        <a class="btn btn-primary btn-xs" ng-href="#/table">
+              Table View
+          </a>
+      </div>
+    </div>
+
+    <div ng-view></div>
+  </div>
+
+
+</body>
+
+</html>

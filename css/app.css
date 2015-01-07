@@ -1,0 +1,54 @@
+/*
+html {
+  font-family: "Roboto", sans-serif !important;
+  font-weight: 300 !important;
+  font-size: 1em !important;
+  line-height: 1.5 !important;
+}
+
+*/
+.project-info {
+  background-color: #f8f8f8;
+}
+
+table {
+  table-layout: fixed;
+  word-wrap: break-word;
+}
+
+th {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.panel {
+  margin-right: 4em;
+  margin-left: 4em;
+  margin-bottom: 2em;
+}
+
+.message-window {
+  font-weight: bold;
+  text-align: center;
+}
+
+.newProjectPanel {
+  display: none;
+}
+
+legend {
+  width:auto; /* Or auto */
+  border-bottom: 1px solid #428bca;
+}
+
+.project-info {
+  border: 1px solid #888;
+}
+
+.project-info .row {
+  padding: 1em;
+}
+
+.separator {
+  margin-bottom: 1.5em;
+}
