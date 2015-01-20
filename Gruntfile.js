@@ -53,13 +53,13 @@
       'gh-pages': {
         options: {
           message: 'Content committed from Grunt gh-pages',
-          base: './build',
+          base: './build/app',
           dotfiles: true
         },
         // These files will get pushed to the `
         // gh-pages` branch (the default)
         // We have to specifically remove node_modules
-              src: ['build/**/*'],
+              src: ['**/*'],
       },
 
       watch: {
@@ -70,13 +70,8 @@
         js: {
           files: ['js/{,*/}*.js'],
           tasks: ['jshint']
-        },
-        // watch all css files and auto prefix if needed
-        styles: {
-          files: ['css/{,*/}*.css'],
-          tasks: ['autoprefixer:main']
-        },
-      },
+        }
+      }
     }); // closes initConfig
 
     grunt.task.registerTask(
@@ -84,7 +79,6 @@
       'clean:production',
       'mkdir:build',
       'jshint',
-      'autoprefixer:main',
       'copy:build',
       'gh-pages'
     ]);

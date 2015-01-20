@@ -16,11 +16,11 @@ var projectApp = angular.module('projectCore', ['mongolabResourceHttp', 'hc.mark
     .when('/table', {templateUrl: 'partials/table.html', controller: 'ProjectListController', resolve: {
       projects: function (Project) {return Project.all(); }
     }})
-    .when('/edit/:id', {templateUrl: 'partials/form.html', controller: 'ProjectFormController', resolve: {
+    .when('/edit/:id', {templateUrl: 'partials/editForm.html', controller: 'ProjectFormController', resolve: {
       project: function (Project, $route) {return Project.getById($route.current.params.id); }
     }})
 
-    .when('/new', {templateUrl: 'partials/form.html', controller: 'ProjectFormController', resolve: {
+    .when('/new', {templateUrl: 'partials/addForm.html', controller: 'ProjectFormController', resolve: {
       project: function (Project) {return new Project(); }
     }})
 
@@ -48,6 +48,7 @@ projectApp.config(['markedProvider',
   }]);
 
 projectApp.controller('ProjectListController', function ($scope, Project) {
+  // This queries the database and returns all queries
   Project.all().then(function (projects) {
     $scope.projects = projects;
   });
@@ -59,7 +60,7 @@ projectApp.controller('ProjectFormController', function($scope, $location, proje
     var projectCopy = angular.copy(project);
 
     var changeSuccess = function() {
-      $location.path('/grid');
+      $location.path('#/grid');
     };
 
     var changeError = function() {
@@ -70,7 +71,7 @@ projectApp.controller('ProjectFormController', function($scope, $location, proje
 
     $scope.save = function(){
       $scope.project.$saveOrUpdate(changeSuccess, changeSuccess, changeError, changeError);
-      $location.path('/grid');
+      $location.path('#/grid');
     };
 
     $scope.remove = function() {
